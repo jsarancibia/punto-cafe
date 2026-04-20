@@ -8,6 +8,10 @@ const cafes = [
   { name: "Americano", price: "$2.200", image: "/images/americano.jpg", description: "Suave y equilibrado" },
   { name: "Cappuccino", price: "$2.500", image: "/images/cappuccino.jpg", description: "Espumoso y cremoso" },
   { name: "Latte", price: "$2.700", image: "/images/latte.jpg", description: "Dulce y sedoso" },
+  { name: "Caffè Mocha", price: "$3.100", image: "/images/mocha.jpg", description: "Chocolate y espresso en armonía" },
+  { name: "Flat White", price: "$3.000", image: "/images/flat-white.jpg", description: "Microespuma suave e intenso sabor" },
+  { name: "Caramel Macchiato", price: "$3.300", image: "/images/caramel-macchiato.jpg", description: "Capas cremosas con toque de caramelo" },
+  { name: "Affogato", price: "$3.400", image: "/images/affogato.jpg", description: "Espresso caliente con helado de vainilla" },
   { name: "Café helado", price: "$2.800", image: "/images/cafe-helado.jpg", description: "Refrescante y delicioso" },
   { name: "Té", price: "$1.800", image: "/images/te.jpg", description: "Selección de tés premium" },
 ]
