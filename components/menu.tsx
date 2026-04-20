@@ -8,10 +8,12 @@ const cafes = [
   { name: "Americano", price: "$2.200", image: "/images/americano.jpg", description: "Suave y equilibrado" },
   { name: "Cappuccino", price: "$2.500", image: "/images/cappuccino.jpg", description: "Espumoso y cremoso" },
   { name: "Latte", price: "$2.700", image: "/images/latte.jpg", description: "Dulce y sedoso" },
+  { name: "Cortado", price: "$2.600", image: "/images/cortado.jpg", description: "Espresso corto con leche sedosa" },
   { name: "Caffè Mocha", price: "$3.100", image: "/images/mocha.jpg", description: "Chocolate y espresso en armonía" },
   { name: "Flat White", price: "$3.000", image: "/images/flat-white.jpg", description: "Microespuma suave e intenso sabor" },
   { name: "Caramel Macchiato", price: "$3.300", image: "/images/caramel-macchiato.jpg", description: "Capas cremosas con toque de caramelo" },
   { name: "Affogato", price: "$3.400", image: "/images/affogato.jpg", description: "Espresso caliente con helado de vainilla" },
+  { name: "Cold Brew", price: "$3.200", image: "/images/cold-brew.jpg", description: "Extracción lenta, sabor profundo y fresco" },
   { name: "Café helado", price: "$2.800", image: "/images/cafe-helado.jpg", description: "Refrescante y delicioso" },
   { name: "Té", price: "$1.800", image: "/images/te.jpg", description: "Selección de tés premium" },
 ]
@@ -20,6 +22,9 @@ const comida = [
   { name: "Croissant", price: "$2.200", image: "/images/croissant.jpg", description: "Recién horneado" },
   { name: "Kuchen", price: "$3.000", image: "/images/kuchen.jpg", description: "Tradición alemana" },
   { name: "Sandwich", price: "$3.500", image: "/images/sandwich.jpg", description: "Ingredientes frescos" },
+  { name: "Torta de Chocolate", price: "$3.600", image: "/images/torta-chocolate.jpg", description: "Húmeda y intensa en cacao" },
+  { name: "Queque de Vainilla", price: "$2.900", image: "/images/queque-vainilla.jpg", description: "Miga suave y aroma casero" },
+  { name: "Cheesecake Frutos Rojos", price: "$3.900", image: "/images/cheesecake-frutos-rojos.jpg", description: "Cremoso con cobertura frutal" },
 ]
 
 export function Menu() {
@@ -59,7 +64,7 @@ export function Menu() {
         <div>
           <ScrollAnimation direction="left" delay={0.2} duration={0.6}>
             <h3 className="font-serif text-3xl font-semibold text-foreground mb-12 text-center">
-              Comida
+              Comida y pastelería
             </h3>
           </ScrollAnimation>
           

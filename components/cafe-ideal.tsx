@@ -11,61 +11,139 @@ interface Respuesta {
   opcion: string
 }
 
-const resultados = {
-  "fuerte-con-caliente": {
+type Intensidad = "fuerte" | "suave"
+type Leche = "con-leche" | "sin-leche"
+type Temperatura = "caliente" | "frio"
+type Estilo = "clasico" | "dulce"
+
+interface CafeRecomendado {
+  nombre: string
+  descripcion: string
+  imagen: string
+  color: string
+  intensidad: Intensidad
+  leche: Leche
+  temperatura: Temperatura
+  estilo: Estilo
+}
+
+const catalogoCafes: CafeRecomendado[] = [
+  {
     nombre: "Espresso",
-    descripcion: "Intenso y concentrado, perfecto para los amantes del café puro.",
+    descripcion: "Intenso y concentrado, ideal si prefieres un café puro y potente.",
     imagen: "/images/espresso.jpg",
     color: "from-amber-900 to-amber-700",
+    intensidad: "fuerte",
+    leche: "sin-leche",
+    temperatura: "caliente",
+    estilo: "clasico",
   },
-  "fuerte-con-frio": {
-    nombre: "Espresso Helado",
-    descripcion: "La intensidad del espresso con la frescura del hielo.",
-    imagen: "/images/espresso.jpg",
-    color: "from-amber-800 to-amber-600",
-  },
-  "suave-con-leche-caliente": {
-    nombre: "Cappuccino",
-    descripcion: "Equilibrio perfecto entre espresso, leche vaporizada y espuma cremosa.",
-    imagen: "/images/cappuccino.jpg",
-    color: "from-amber-200 to-amber-400",
-  },
-  "suave-con-leche-frio": {
-    nombre: "Café Helado",
-    descripcion: "Refrescante y suave, ideal para disfrutar en cualquier momento del día.",
-    imagen: "/images/cafe-helado.jpg",
-    color: "from-amber-300 to-amber-500",
-  },
-  "suave-sin-leche-caliente": {
+  {
     nombre: "Americano",
-    descripcion: "Suave y equilibrado, espresso diluido con agua caliente.",
+    descripcion: "Suave, equilibrado y sin leche, perfecto para tomar a cualquier hora.",
     imagen: "/images/americano.jpg",
-    color: "from-amber-400 to-amber-600",
+    color: "from-amber-600 to-amber-400",
+    intensidad: "suave",
+    leche: "sin-leche",
+    temperatura: "caliente",
+    estilo: "clasico",
   },
-  "suave-sin-leche-frio": {
-    nombre: "Americano Helado",
-    descripcion: "Fresco y ligero, perfecto para los días cálidos.",
-    imagen: "/images/americano.jpg",
+  {
+    nombre: "Cappuccino",
+    descripcion: "Espuma cremosa y sabor armonioso para un perfil suave y clásico.",
+    imagen: "/images/cappuccino.jpg",
     color: "from-amber-300 to-amber-500",
+    intensidad: "suave",
+    leche: "con-leche",
+    temperatura: "caliente",
+    estilo: "clasico",
   },
-  "fuerte-con-leche-caliente": {
+  {
     nombre: "Latte",
-    descripcion: "Espresso intenso con leche vaporizada suave y cremosa.",
+    descripcion: "Textura sedosa y cremosa con notas suaves de café y leche.",
     imagen: "/images/latte.jpg",
     color: "from-amber-300 to-amber-500",
+    intensidad: "suave",
+    leche: "con-leche",
+    temperatura: "caliente",
+    estilo: "dulce",
   },
-  "fuerte-con-leche-frio": {
-    nombre: "Latte Helado",
-    descripcion: "La cremosidad del latte con la frescura del hielo.",
-    imagen: "/images/latte.jpg",
+  {
+    nombre: "Cortado",
+    descripcion: "Balance ideal entre intensidad del espresso y suavidad de leche.",
+    imagen: "/images/cortado.jpg",
+    color: "from-amber-700 to-amber-500",
+    intensidad: "fuerte",
+    leche: "con-leche",
+    temperatura: "caliente",
+    estilo: "clasico",
+  },
+  {
+    nombre: "Caffè Mocha",
+    descripcion: "Combinación deliciosa de espresso, leche y chocolate.",
+    imagen: "/images/mocha.jpg",
+    color: "from-amber-800 to-orange-500",
+    intensidad: "suave",
+    leche: "con-leche",
+    temperatura: "caliente",
+    estilo: "dulce",
+  },
+  {
+    nombre: "Flat White",
+    descripcion: "Cuerpo intenso, microespuma fina y un acabado elegante.",
+    imagen: "/images/flat-white.jpg",
+    color: "from-amber-700 to-amber-500",
+    intensidad: "fuerte",
+    leche: "con-leche",
+    temperatura: "caliente",
+    estilo: "clasico",
+  },
+  {
+    nombre: "Caramel Macchiato",
+    descripcion: "Bebida cremosa y aromática con un toque dulce de caramelo.",
+    imagen: "/images/caramel-macchiato.jpg",
+    color: "from-amber-500 to-orange-400",
+    intensidad: "suave",
+    leche: "con-leche",
+    temperatura: "caliente",
+    estilo: "dulce",
+  },
+  {
+    nombre: "Affogato",
+    descripcion: "Postre-café irresistible: helado de vainilla con espresso caliente.",
+    imagen: "/images/affogato.jpg",
+    color: "from-amber-700 to-orange-500",
+    intensidad: "fuerte",
+    leche: "con-leche",
+    temperatura: "frio",
+    estilo: "dulce",
+  },
+  {
+    nombre: "Café helado",
+    descripcion: "Refrescante, suave y cremoso para los días cálidos.",
+    imagen: "/images/cafe-helado.jpg",
     color: "from-amber-400 to-amber-600",
+    intensidad: "suave",
+    leche: "con-leche",
+    temperatura: "frio",
+    estilo: "clasico",
   },
-}
+  {
+    nombre: "Cold Brew",
+    descripcion: "Extracción en frío con sabor profundo, fresco y menos acidez.",
+    imagen: "/images/cold-brew.jpg",
+    color: "from-amber-800 to-amber-600",
+    intensidad: "fuerte",
+    leche: "sin-leche",
+    temperatura: "frio",
+    estilo: "clasico",
+  },
+]
 
 export function CafeIdeal() {
   const [paso, setPaso] = useState(0)
   const [respuestas, setRespuestas] = useState<Respuesta[]>([])
-  const [resultado, setResultado] = useState<keyof typeof resultados | null>(null)
+  const [resultado, setResultado] = useState<CafeRecomendado | null>(null)
 
   const preguntas = [
     {
@@ -92,6 +170,14 @@ export function CafeIdeal() {
         { valor: "frio", label: "Helado", icon: "❄️" },
       ],
     },
+    {
+      id: "estilo",
+      pregunta: "¿Prefieres un perfil clásico o más dulce?",
+      opciones: [
+        { valor: "clasico", label: "Clásico", icon: "⚫" },
+        { valor: "dulce", label: "Dulce", icon: "🍯" },
+      ],
+    },
   ]
 
   const handleRespuesta = (preguntaId: string, valor: string) => {
@@ -100,23 +186,36 @@ export function CafeIdeal() {
       opcion: valor,
     }
 
-    const nuevasRespuestas = [...respuestas, nuevaRespuesta]
+    const nuevasRespuestas = [...respuestas.filter((r) => r.pregunta !== preguntaId), nuevaRespuesta]
     setRespuestas(nuevasRespuestas)
 
     if (paso < preguntas.length - 1) {
       setTimeout(() => setPaso(paso + 1), 300)
     } else {
-      // Calcular resultado
-      const intensidad = nuevasRespuestas.find((r) => r.pregunta === "intensidad")?.opcion || "suave"
-      const leche = nuevasRespuestas.find((r) => r.pregunta === "leche")?.opcion || "sin-leche"
-      const temperatura = nuevasRespuestas.find((r) => r.pregunta === "temperatura")?.opcion || "caliente"
+      const intensidad = (nuevasRespuestas.find((r) => r.pregunta === "intensidad")?.opcion || "suave") as Intensidad
+      const leche = (nuevasRespuestas.find((r) => r.pregunta === "leche")?.opcion || "sin-leche") as Leche
+      const temperatura = (nuevasRespuestas.find((r) => r.pregunta === "temperatura")?.opcion || "caliente") as Temperatura
+      const estilo = (nuevasRespuestas.find((r) => r.pregunta === "estilo")?.opcion || "clasico") as Estilo
 
-      const clave = `${intensidad}-${leche}-${temperatura}` as keyof typeof resultados
-      
-      // Fallback si la combinación no existe
-      const resultadoFinal = resultados[clave] ? clave : "suave-con-leche-caliente"
-      setResultado(resultadoFinal)
-      setTimeout(() => setPaso(3), 500)
+      const matchExacto =
+        catalogoCafes.find(
+          (cafe) =>
+            cafe.intensidad === intensidad &&
+            cafe.leche === leche &&
+            cafe.temperatura === temperatura &&
+            cafe.estilo === estilo,
+        ) ||
+        catalogoCafes.find(
+          (cafe) =>
+            cafe.intensidad === intensidad &&
+            cafe.leche === leche &&
+            cafe.temperatura === temperatura,
+        ) ||
+        catalogoCafes.find((cafe) => cafe.intensidad === intensidad && cafe.temperatura === temperatura) ||
+        catalogoCafes[0]
+
+      setResultado(matchExacto)
+      setTimeout(() => setPaso(preguntas.length), 500)
     }
   }
 
@@ -150,7 +249,7 @@ export function CafeIdeal() {
 
         <div className="bg-card/80 backdrop-blur-sm rounded-3xl border border-border/50 p-8 md:p-12 shadow-xl">
           {/* Progress bar */}
-          {paso < 3 && (
+          {paso < preguntas.length && (
             <div className="mb-8">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-sm text-muted-foreground">
@@ -172,7 +271,7 @@ export function CafeIdeal() {
           )}
 
           <AnimatePresence mode="wait">
-            {paso < 3 ? (
+            {paso < preguntas.length ? (
               <motion.div
                 key={paso}
                 initial={{ opacity: 0, y: 20 }}
@@ -232,9 +331,9 @@ export function CafeIdeal() {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                  className={`inline-block bg-gradient-to-r ${resultados[resultado].color} text-white px-8 py-3 rounded-full text-2xl md:text-3xl font-bold mb-6 shadow-lg`}
+                  className={`inline-block bg-gradient-to-r ${resultado.color} text-white px-8 py-3 rounded-full text-2xl md:text-3xl font-bold mb-6 shadow-lg`}
                 >
-                  {resultados[resultado].nombre}
+                  {resultado.nombre}
                 </motion.div>
 
                 <motion.div
@@ -244,8 +343,8 @@ export function CafeIdeal() {
                   className="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-6"
                 >
                   <Image
-                    src={resultados[resultado].imagen}
-                    alt={resultados[resultado].nombre}
+                    src={resultado.imagen}
+                    alt={resultado.nombre}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 600px"
@@ -258,7 +357,7 @@ export function CafeIdeal() {
                   transition={{ delay: 0.5 }}
                   className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto"
                 >
-                  {resultados[resultado].descripcion}
+                  {resultado.descripcion}
                 </motion.p>
 
                 <motion.button
