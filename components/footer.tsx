@@ -16,85 +16,76 @@ function WhatsAppIcon({ className }: { className?: string }) {
   )
 }
 
+const links: { href: string; label: string }[] = [
+  { href: "#inicio", label: "Inicio" },
+  { href: "#destacados", label: "Destacados" },
+  { href: "#menu", label: "Menú" },
+  { href: "#pedido", label: "Cómo pedir" },
+  { href: "#contacto", label: "Contacto" },
+]
+
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const year = new Date().getFullYear()
 
   return (
-    <footer className="relative py-12 px-4 bg-gradient-to-b from-background to-card/50 border-t border-primary/10 ring-1 ring-inset ring-primary/5">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {/* Brand */}
+    <footer className="relative border-t border-border/60 py-12 md:py-16 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
-              PUNTO CAFÉ
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Tu pausa perfecta, en Punto Café. Donde cada taza cuenta una historia.
+            <p className="font-semibold text-foreground">Punto Café</p>
+            <p className="text-sm text-muted-foreground mt-2 max-w-xs leading-relaxed">
+              Cafetería de barrio. Menú y pedido claros, para que pases a buscar
+              o disfrutes en la mesa.
             </p>
           </div>
-
-          {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Enlaces</h4>
+            <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-3">
+              En esta página
+            </p>
             <ul className="space-y-2">
-              <li>
-                <a href="#inicio" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Inicio
-                </a>
-              </li>
-              <li>
-                <a href="#menu" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Menú
-                </a>
-              </li>
-              <li>
-                <a href="#beneficios" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Beneficios
-                </a>
-              </li>
-              <li>
-                <a href="#contacto" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Contacto
-                </a>
-              </li>
+              {links.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
-
-          {/* Social */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Síguenos</h4>
-            <div className="flex gap-4">
+            <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-3">
+              Redes
+            </p>
+            <div className="flex gap-3">
               <motion.a
                 href="https://wa.me/56912345678"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center text-white hover:bg-[#128C7E] transition-colors"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#25D366] text-white"
+                whileHover={{ scale: 1.05 }}
                 aria-label="WhatsApp"
               >
-                <WhatsAppIcon className="w-5 h-5" />
+                <WhatsAppIcon className="h-5 w-5" />
               </motion.a>
               <motion.a
                 href="https://instagram.com/puntocafe"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737] rounded-full flex items-center justify-center text-white hover:opacity-90 transition-opacity"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border glass text-foreground"
+                whileHover={{ scale: 1.05 }}
                 aria-label="Instagram"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="h-5 w-5" />
               </motion.a>
             </div>
           </div>
         </div>
-
-        <div className="pt-8 border-t border-border/50 text-center">
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} Punto Café. Todos los derechos reservados.
-          </p>
-        </div>
+        <p className="mt-10 text-center text-xs text-muted-foreground">
+          © {year} Punto Café. Pedidos vía demostración (sin pago en web).
+        </p>
       </div>
     </footer>
   )

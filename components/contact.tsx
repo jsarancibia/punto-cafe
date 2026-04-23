@@ -21,17 +21,17 @@ export function Contact() {
   return (
     <section
       id="contacto"
-      className="relative py-24 px-4 bg-gradient-to-b from-card/30 to-background"
+      className="relative scroll-mt-20 py-20 md:py-24 px-4 border-t border-border/50"
     >
       <div className="max-w-6xl mx-auto">
         <ScrollAnimation direction="down" delay={0.2} duration={0.8}>
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <div className="text-center mb-10 md:mb-12">
+            <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">ubicación</p>
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
               Contacto
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6" />
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Estamos aquí para ti. Contáctanos y te responderemos lo antes posible
+            <p className="text-sm md:text-base text-muted-foreground max-w-md mx-auto mt-2">
+              Retiro en el local o escríbenos. Respondemos al tiro.
             </p>
           </div>
         </ScrollAnimation>
@@ -40,7 +40,7 @@ export function Contact() {
           {/* Información de contacto */}
           <StaggerContainer className="space-y-6" staggerDelay={0.1}>
             <StaggerItem direction="left">
-              <div className="flex items-start gap-4 bg-card/80 backdrop-blur-sm p-6 rounded-xl border border-border/50">
+              <div className="flex items-start gap-4 glass p-5 rounded-2xl border border-border/60">
                 <MapPin className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">Ubicación</h3>
@@ -54,7 +54,7 @@ export function Contact() {
             </StaggerItem>
 
             <StaggerItem direction="left">
-              <div className="flex items-start gap-4 bg-card/80 backdrop-blur-sm p-6 rounded-xl border border-border/50">
+              <div className="flex items-start gap-4 glass p-5 rounded-2xl border border-border/60">
                 <Clock className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">Horarios</h3>
@@ -68,7 +68,7 @@ export function Contact() {
             </StaggerItem>
 
             <StaggerItem direction="left">
-              <div className="flex items-start gap-4 bg-card/80 backdrop-blur-sm p-6 rounded-xl border border-border/50">
+              <div className="flex items-start gap-4 glass p-5 rounded-2xl border border-border/60">
                 <Phone className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">Teléfono</h3>

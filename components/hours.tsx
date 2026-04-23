@@ -7,19 +7,19 @@ export function Hours() {
   return (
     <section className="py-20 px-4 bg-card">
       <div className="max-w-2xl mx-auto text-center">
-        <ScrollAnimation direction="blur" delay={0.2} duration={0.8}>
+        <ScrollAnimation direction="fade" delay={0.2} duration={0.8}>
           <h2 className="font-serif text-3xl md:text-4xl font-medium text-foreground mb-6">
             Horarios y ubicación
           </h2>
         </ScrollAnimation>
         
-        <ScrollAnimation direction="blur" delay={0.3} duration={0.8}>
+        <ScrollAnimation direction="fade" delay={0.3} duration={0.8}>
           <div className="w-16 h-0.5 bg-primary mx-auto mb-12" />
         </ScrollAnimation>
 
         <StaggerContainer className="grid md:grid-cols-2 gap-8" staggerDelay={0.2}>
           {/* Horarios */}
-          <StaggerItem direction="blur">
+          <StaggerItem direction="fade">
             <div className="flex flex-col items-center">
               <Clock className="w-8 h-8 text-primary mb-4" />
               <h3 className="font-serif text-xl font-medium text-foreground mb-4">
@@ -43,7 +43,7 @@ export function Hours() {
           </StaggerItem>
 
           {/* Ubicación */}
-          <StaggerItem direction="blur">
+          <StaggerItem direction="fade">
             <div className="flex flex-col items-center">
               <MapPin className="w-8 h-8 text-primary mb-4" />
               <h3 className="font-serif text-xl font-medium text-foreground mb-4">

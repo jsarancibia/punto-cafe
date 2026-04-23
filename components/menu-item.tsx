@@ -2,49 +2,74 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { ParallaxTiltImage } from "@/components/parallax-tilt-image"
+import { Plus, Check } from "lucide-react"
+import { useState } from "react"
+import { useCart } from "@/context/cart-context"
+import { Button } from "@/components/ui/button"
+import type { MenuProduct } from "@/lib/menu-data"
+import { cn } from "@/lib/utils"
 
-interface MenuItemProps {
-  name: string
-  price: string
-  image: string
-  description?: string
-}
+export function MenuItem({ product }: { product: MenuProduct }) {
+  const { addProduct } = useCart()
+  const [addedFlash, setAddedFlash] = useState(false)
 
-export function MenuItem({ name, price, image, description }: MenuItemProps) {
+  const onAdd = () => {
+    addProduct(product, 1)
+    setAddedFlash(true)
+    window.setTimeout(() => setAddedFlash(false), 900)
+  }
+
   return (
-    <motion.div
-      className="group futuristic-glass rounded-2xl overflow-hidden shadow-md ring-1 ring-border/50 hover:ring-primary/30 hover:shadow-2xl transition-all cursor-pointer"
-      whileHover={{ y: -8, scale: 1.02 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+    <article
+      id={`product-${product.id}`}
+      className="group scroll-mt-32 flex flex-col glass rounded-2xl overflow-hidden border border-border/60 transition-shadow hover:shadow-md hover:shadow-primary/5"
     >
-      <div className="aspect-[4/3] relative overflow-hidden">
-        <ParallaxTiltImage
-          containerClassName="h-full w-full"
-          tiltMax={7}
-          kenBurns={false}
-        >
-          <div className="relative h-full w-full">
-            <Image
-              src={image || "/placeholder.svg"}
-              alt={name}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="absolute top-4 right-4 z-10 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
-              {price}
-            </div>
-          </div>
-        </ParallaxTiltImage>
+      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+        <Image
+          src={product.image || "/placeholder.svg"}
+          alt={product.name}
+          fill
+          className="object-cover transition duration-500 group-hover:scale-[1.03]"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+        <div className="absolute top-3 right-3 rounded-full border border-border/50 bg-background/80 px-2.5 py-0.5 text-xs font-mono text-foreground backdrop-blur-sm">
+          {product.price}
+        </div>
       </div>
-      <div className="p-6">
-        <h3 className="font-serif text-xl font-semibold text-foreground mb-2">{name}</h3>
-        {description && (
-          <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
-        )}
+      <div className="flex flex-1 flex-col p-4 md:p-5 gap-3">
+        <div>
+          <h3 className="font-semibold text-base md:text-lg text-foreground">
+            {product.name}
+          </h3>
+          {product.description && (
+            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+              {product.description}
+            </p>
+          )}
+        </div>
+        <motion.div whileTap={{ scale: 0.98 }} className="mt-auto">
+          <Button
+            type="button"
+            onClick={onAdd}
+            className={cn(
+              "w-full h-11 rounded-xl font-semibold gap-2",
+              addedFlash && "bg-accent text-accent-foreground"
+            )}
+          >
+            {addedFlash ? (
+              <>
+                <Check className="h-4 w-4" />
+                Añadido
+              </>
+            ) : (
+              <>
+                <Plus className="h-4 w-4" />
+                Añadir al pedido
+              </>
+            )}
+          </Button>
+        </motion.div>
       </div>
-    </motion.div>
+    </article>
   )
 }

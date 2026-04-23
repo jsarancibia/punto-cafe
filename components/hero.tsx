@@ -1,127 +1,81 @@
 "use client"
 
 import Image from "next/image"
-import { ScrollAnimation } from "@/components/ui/scroll-animation"
 import { motion, useReducedMotion } from "framer-motion"
-import { ArrowDown, Sparkles } from "lucide-react"
-import { ParallaxTiltImage } from "@/components/parallax-tilt-image"
+import { ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export function Hero() {
   const reduce = useReducedMotion()
 
-  const scrollToNext = () => {
-    const element = document.querySelector("#experiencia")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" })
-    }
-  }
-
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 py-24 md:py-20 overflow-hidden"
+      className="relative min-h-[min(100dvh,880px)] flex flex-col justify-center pt-20 pb-12 md:pt-24 md:pb-20 px-4"
     >
-      {/* Refuerzo local (compatible con FuturisticShell) */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 h-80 w-80 rounded-full bg-amber-200/15 dark:bg-amber-800/10 blur-3xl" />
-      </div>
-
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        <ScrollAnimation direction="scale" delay={0.1} duration={0.7}>
-          <div className="futuristic-corners mb-10 inline-block rounded-2xl p-1">
-            <ParallaxTiltImage
-              containerClassName="mx-auto w-[min(100%,280px)] sm:w-[320px] aspect-square"
-              tiltMax={14}
-            >
-              <div className="relative h-full min-h-0 w-full overflow-hidden rounded-2xl shadow-2xl ring-1 ring-primary/20 futuristic-btn-glow">
-                <Image
-                  src="/images/logo.jpeg"
-                  alt="Punto Café - Logo de un gato tomando café"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 280px, 320px"
-                  priority
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-amber-400/10" />
-              </div>
-            </ParallaxTiltImage>
-          </div>
-        </ScrollAnimation>
-
-        <ScrollAnimation direction="fade" delay={0.25} duration={0.7}>
-          <motion.div
-            className="mb-2 flex items-center justify-center gap-2"
-            initial={reduce ? false : { opacity: 0 }}
-            animate={reduce ? undefined : { opacity: 1 }}
-            transition={{ delay: 0.4 }}
+      <div className="max-w-6xl mx-auto w-full grid gap-10 lg:gap-16 lg:grid-cols-2 lg:items-center">
+        <div>
+          <motion.p
+            className="font-mono text-xs text-primary uppercase tracking-widest mb-3"
+            initial={reduce ? false : { opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
           >
-            <Sparkles className="h-4 w-4 text-primary" aria-hidden />
-            <span className="font-mono text-xs uppercase tracking-[0.4em] text-primary/80">
-              bienvenida
-            </span>
-            <Sparkles className="h-4 w-4 text-primary" aria-hidden />
-          </motion.div>
-        </ScrollAnimation>
-
-        <ScrollAnimation direction="fade" delay={0.3} duration={0.8}>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-balance leading-tight">
-            <span className="bg-gradient-to-r from-foreground via-primary to-amber-700/90 bg-clip-text text-transparent dark:to-amber-500/80">
-              PUNTO CAFÉ
+            Pedido claro — sin vueltas
+          </motion.p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-foreground leading-[1.05] tracking-tight text-balance">
+            Café de barrio,{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+              sabor a hoy
             </span>
           </h1>
-        </ScrollAnimation>
-
-        <ScrollAnimation direction="fade" delay={0.45} duration={0.7}>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4 font-light max-w-2xl mx-auto">
-            Tu pausa perfecta, en Punto Café
+          <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-md leading-relaxed">
+            Arma tu carrito, revisa y envíanos el pedido por WhatsApp. Así
+            aseguras tu taza o tu dulce sin filas.
           </p>
-          <p className="text-lg text-muted-foreground/85 mb-12 max-w-xl mx-auto">
-            Donde cada taza cuenta una historia y cada momento se convierte en un
-            recuerdo
-          </p>
-        </ScrollAnimation>
-
-        <ScrollAnimation direction="up" delay={0.55} duration={0.55}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <motion.a
-              href="#menu"
-              whileHover={reduce ? undefined : { scale: 1.04, y: -2 }}
-              whileTap={reduce ? undefined : { scale: 0.98 }}
-              className="inline-block rounded-full bg-primary px-10 py-4 text-lg font-medium text-primary-foreground shadow-lg transition-all hover:bg-primary/90 futuristic-btn-glow"
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md">
+            <Button
+              asChild
+              size="lg"
+              className="h-14 rounded-2xl text-base font-semibold neon-glow w-full sm:w-auto"
             >
-              Ver nuestro menú
-            </motion.a>
-            <motion.a
-              href="#contacto"
-              whileHover={reduce ? undefined : { scale: 1.03 }}
-              whileTap={reduce ? undefined : { scale: 0.98 }}
-              className="futuristic-glass inline-block rounded-full border-2 border-primary/40 px-10 py-4 text-lg font-medium text-primary transition-all hover:border-primary hover:shadow-md"
+              <a href="#pedido" className="inline-flex items-center justify-center gap-2">
+                Pedir ahora
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="secondary"
+              size="lg"
+              className="h-14 rounded-2xl text-base w-full sm:w-auto border border-border/80"
             >
-              Visítanos
-            </motion.a>
+              <a href="#menu">Ver menú</a>
+            </Button>
           </div>
-        </ScrollAnimation>
+          <p className="mt-4 text-xs text-muted-foreground">
+            Sin registro. Entrega/retiro según disponibilidad en el local.
+          </p>
+        </div>
 
-        <motion.button
-          type="button"
-          onClick={scrollToNext}
-          animate={
-            reduce
-              ? undefined
-              : { y: [0, 10, 0] }
-          }
-          transition={reduce ? undefined : { duration: 2.2, repeat: Number.POSITIVE_INFINITY }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground transition-colors hover:text-foreground"
-          aria-label="Seguir a la sección experiencia"
+        <motion.div
+          className="relative mx-auto w-full max-w-md lg:max-w-none"
+          initial={reduce ? false : { opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <span className="flex flex-col items-center gap-1">
-            <span className="font-mono text-[10px] uppercase tracking-widest opacity-60">
-              explorar
-            </span>
-            <ArrowDown className="h-6 w-6" />
-          </span>
-        </motion.button>
+          <div className="relative aspect-[4/5] w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-border/50 glass">
+            <Image
+              src="/images/logo.jpeg"
+              alt="Punto Café"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 90vw, 40vw"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
+          </div>
+        </motion.div>
       </div>
     </section>
   )
