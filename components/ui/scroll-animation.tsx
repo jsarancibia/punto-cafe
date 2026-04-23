@@ -60,7 +60,12 @@ export function ScrollAnimation({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={variants[direction]}
-      transition={{ duration, delay }}
+      transition={{
+        duration,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+        type: "tween" as const,
+      }}
       className={className}
     >
       {children}

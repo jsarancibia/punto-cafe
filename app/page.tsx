@@ -12,9 +12,11 @@ import { CTA } from "@/components/cta"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
+import { FuturisticShell } from "@/components/futuristic-shell"
 
 export default function Home() {
   return (
+    <FuturisticShell>
     <main className="relative">
       <Navbar />
       <Hero />
@@ -31,5 +33,6 @@ export default function Home() {
       <Footer />
       <WhatsAppButton />
     </main>
+    </FuturisticShell>
   )
 }

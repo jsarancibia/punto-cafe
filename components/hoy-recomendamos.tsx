@@ -4,6 +4,7 @@ import { ScrollAnimation } from "@/components/ui/scroll-animation"
 import { motion } from "framer-motion"
 import { Star, ArrowRight } from "lucide-react"
 import Image from "next/image"
+import { ParallaxTiltImage } from "@/components/parallax-tilt-image"
 
 // Fácil de cambiar: solo modifica este objeto
 const recomendacion = {
@@ -24,16 +25,19 @@ export function HoyRecomendamos() {
       <div className="relative z-10 max-w-6xl mx-auto">
         <ScrollAnimation direction="down" delay={0.2} duration={0.8}>
           <div className="text-center mb-12">
+            <p className="font-mono text-xs uppercase tracking-[0.35em] text-primary/80 mb-2">
+              sistema // día
+            </p>
             <motion.div
               animate={{
-                scale: [1, 1.05, 1],
+                scale: [1, 1.04, 1],
               }}
               transition={{
-                duration: 3,
+                duration: 2.8,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-4"
+              className="inline-flex items-center gap-2 border border-primary/20 bg-primary/10 text-primary px-4 py-2 rounded-full mb-4 shadow-sm shadow-primary/5"
             >
               <Star className="w-4 h-4 fill-primary" />
               <span className="text-sm font-semibold">Recomendación del día</span>
@@ -47,28 +51,33 @@ export function HoyRecomendamos() {
 
         <ScrollAnimation direction="scale" delay={0.4} duration={0.8}>
           <motion.div
-            whileHover={{ y: -5 }}
-            className="bg-card/90 backdrop-blur-sm rounded-3xl border border-border/50 overflow-hidden shadow-2xl"
+            whileHover={{ y: -4 }}
+            className="futuristic-glass rounded-3xl border border-primary/15 overflow-hidden shadow-2xl ring-1 ring-primary/10"
           >
             <div className="grid md:grid-cols-2 gap-0">
               {/* Imagen */}
-              <div className="relative h-64 md:h-auto min-h-[400px]">
-                <Image
-                  src={recomendacion.imagen}
-                  alt={recomendacion.nombre}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-                
-                {/* Badge destacado */}
+              <div className="relative min-h-[16rem] md:min-h-[25rem]">
+                <ParallaxTiltImage
+                  containerClassName="relative h-full min-h-[16rem] w-full md:min-h-[25rem]"
+                  tiltMax={8}
+                >
+                  <div className="relative h-full min-h-[16rem] w-full md:min-h-[25rem]">
+                    <Image
+                      src={recomendacion.imagen}
+                      alt={recomendacion.nombre}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+                  </div>
+                </ParallaxTiltImage>
                 {recomendacion.destacado && (
                   <motion.div
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                    className="absolute top-6 right-6 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+                    className="absolute top-6 right-6 z-10 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-bold shadow-lg"
                   >
                     ⭐ Especial
                   </motion.div>
