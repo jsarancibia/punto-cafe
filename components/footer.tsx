@@ -18,6 +18,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 const links: { href: string; label: string }[] = [
   { href: "#inicio", label: "Inicio" },
+  { href: "#recomendador-cafe", label: "Tu café ideal" },
   { href: "#destacados", label: "Destacados" },
   { href: "#menu", label: "Menú" },
   { href: "#pedido", label: "Cómo pedir" },

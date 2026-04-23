@@ -6,6 +6,7 @@ import { Menu, X, ShoppingBag } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useCart } from "@/context/cart-context"
 import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -21,6 +22,7 @@ export function Navbar() {
 
   const navItems = [
     { label: "Inicio", href: "#inicio" },
+    { label: "Tu café", href: "#recomendador-cafe" },
     { label: "Destacados", href: "#destacados" },
     { label: "Menú", href: "#menu" },
     { label: "Pedido", href: "#pedido" },
@@ -74,6 +76,7 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <Button
             type="button"
             variant="secondary"

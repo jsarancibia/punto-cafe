@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { AppProviders } from "@/components/app-providers"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 const space = Space_Grotesk({
@@ -43,11 +44,18 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className="scroll-smooth dark" suppressHydrationWarning>
+    <html lang="es" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${space.className} ${space.variable} ${mono.variable} min-h-dvh font-sans antialiased text-base`}
       >
-        <AppProviders>{children}</AppProviders>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AppProviders>{children}</AppProviders>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
