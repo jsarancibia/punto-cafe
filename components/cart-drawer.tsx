@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { useCart, WHATSAPP_NUMBER } from "@/context/cart-context"
 import {
@@ -14,6 +13,7 @@ import { Button } from "@/components/ui/button"
 import { formatClp } from "@/lib/menu-data"
 import { Minus, Plus, Trash2, MessageCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { MenuProductImage } from "@/components/menu-product-image"
 
 export function CartDrawer() {
   const {
@@ -63,11 +63,9 @@ export function CartDrawer() {
                   className="glass flex gap-3 rounded-xl p-3 border border-border/80"
                 >
                   <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-muted">
-                    <Image
-                      src={line.image}
-                      alt=""
-                      fill
-                      className="object-cover"
+                    <MenuProductImage
+                      storagePath={line.image}
+                      alt={line.name}
                       sizes="64px"
                     />
                   </div>

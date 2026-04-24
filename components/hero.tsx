@@ -1,12 +1,23 @@
 "use client"
 
 import Image from "next/image"
+import { useState, useCallback } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import {
+  PLACEHOLDER_IMAGE,
+  resolveBrandImageUrl,
+} from "@/lib/resolve-assets"
 
 export function Hero() {
   const reduce = useReducedMotion()
+  const [logoSrc, setLogoSrc] = useState(() =>
+    resolveBrandImageUrl("/images/logo.jpeg")
+  )
+  const onLogoError = useCallback(() => {
+    setLogoSrc(PLACEHOLDER_IMAGE)
+  }, [])
 
   return (
     <section
@@ -66,12 +77,14 @@ export function Hero() {
         >
           <div className="relative aspect-[4/5] w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-border/50 glass">
             <Image
-              src="/images/logo.jpeg"
+              key={logoSrc}
+              src={logoSrc}
               alt="Punto Café"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 90vw, 40vw"
               priority
+              onError={onLogoError}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
           </div>

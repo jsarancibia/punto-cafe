@@ -1,5 +1,7 @@
 /**
  * Menú unificado: datos para carta, filtros, recomendador y carrito.
+ * Fotos: colócalas en `public/images/` con estos nombres (latte.jpg, etc.)
+ * y activa `NEXT_PUBLIC_USE_REAL_IMAGES=1` en `.env.local` (ver `lib/resolve-assets.ts`).
  */
 
 export type MenuCategory = "cafe" | "frio" | "dulce"

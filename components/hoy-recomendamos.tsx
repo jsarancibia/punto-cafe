@@ -3,8 +3,8 @@
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
 import { motion } from "framer-motion"
 import { Star, Plus } from "lucide-react"
-import Image from "next/image"
 import { getProductById, featuredProductIds } from "@/lib/menu-data"
+import { MenuProductImage } from "@/components/menu-product-image"
 import { useCart } from "@/context/cart-context"
 import { Button } from "@/components/ui/button"
 
@@ -49,11 +49,9 @@ export function HoyRecomendamos() {
             >
               <div className="flex flex-col h-full glass rounded-2xl overflow-hidden border border-border/60">
                 <div className="relative aspect-square bg-muted">
-                  <Image
-                    src={p.image}
+                  <MenuProductImage
+                    storagePath={p.image}
                     alt={p.name}
-                    fill
-                    className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
                   />
                   <span className="absolute top-2 right-2 inline-flex h-7 items-center rounded-full border border-border/50 bg-background/80 px-2 text-xs font-mono backdrop-blur-sm">

@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useMemo, useCallback } from "react"
-import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
+import { MenuProductImage } from "@/components/menu-product-image"
 import { menuAll, type MenuProduct } from "@/lib/menu-data"
 import { Button } from "@/components/ui/button"
 import { ScrollAnimation } from "@/components/ui/scroll-animation"
@@ -224,11 +224,9 @@ export function CoffeeRecommender() {
                     className="glass flex flex-col h-full min-h-[420px] md:min-h-full rounded-2xl overflow-hidden border border-primary/20 shadow-xl"
                   >
                     <div className="relative flex-1 min-h-[220px] bg-muted">
-                      <Image
-                        src={result.image}
+                      <MenuProductImage
+                        storagePath={result.image}
                         alt={result.name}
-                        fill
-                        className="object-cover"
                         sizes="(max-width: 768px) 100vw, 45vw"
                         priority
                       />

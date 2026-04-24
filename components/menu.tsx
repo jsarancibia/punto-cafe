@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { MenuItem } from "@/components/menu-item"
-import { ScrollAnimation, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation"
+import { ScrollAnimation } from "@/components/ui/scroll-animation"
 import { menuCafes, menuComida, type MenuCategory } from "@/lib/menu-data"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -20,6 +20,10 @@ function filterCafes(cat: "all" | MenuCategory) {
   return menuCafes.filter((c) => c.category === cat)
 }
 
+/**
+ * Grilla directa (sin Stagger) para evitar retraso y opacidad 0 en muchas cards.
+ * Las imágenes usan lazy + fallback (ver `menu-item` y `lib/resolve-assets.ts`).
+ */
 export function Menu() {
   const [filter, setFilter] = useState<"all" | MenuCategory>("all")
 
@@ -34,7 +38,7 @@ export function Menu() {
   return (
     <section id="menu" className="relative scroll-mt-20 py-20 md:py-28 px-4">
       <div className="max-w-7xl mx-auto">
-        <ScrollAnimation direction="down" delay={0.1} duration={0.5}>
+        <ScrollAnimation direction="down" delay={0.1} duration={0.4}>
           <div className="text-center mb-8 md:mb-12 max-w-2xl mx-auto">
             <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
               carta
@@ -75,16 +79,11 @@ export function Menu() {
                 Bebidas
               </h3>
             )}
-            <StaggerContainer
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
-              staggerDelay={0.05}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
               {cafes.map((p) => (
-                <StaggerItem key={p.id} direction="up">
-                  <MenuItem product={p} />
-                </StaggerItem>
+                <MenuItem key={p.id} product={p} />
               ))}
-            </StaggerContainer>
+            </div>
           </div>
         )}
 
@@ -93,16 +92,11 @@ export function Menu() {
             <h3 className="text-sm font-mono text-muted-foreground uppercase tracking-widest mb-4 text-center">
               Comida y pastelería
             </h3>
-            <StaggerContainer
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
-              staggerDelay={0.05}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
               {comida.map((p) => (
-                <StaggerItem key={p.id} direction="up">
-                  <MenuItem product={p} />
-                </StaggerItem>
+                <MenuItem key={p.id} product={p} />
               ))}
-            </StaggerContainer>
+            </div>
           </div>
         )}
       </div>
